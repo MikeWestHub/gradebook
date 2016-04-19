@@ -1,3 +1,20 @@
 <h1>Gradebook</h1>
 <h2>Login</h2>
-<p>Find me in app/views/sessions/new.html.erb</p>
+
+<%= form_for :session, url: sessions_create_path do |f| %>
+  <div class="form-group">
+    <%= f.label :login %>
+    <%= f.text_field :login %>
+  </div>
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </div>
+  <div class="form-group">
+    <button type="submit" class="btn btn-success">Login</button>
+  </div>
+<% end %>
+
+<p>
+  <%= link_to "Create Profile", new_user_path%>
+</p>
