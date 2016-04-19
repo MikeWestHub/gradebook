@@ -1,10 +1,6 @@
 require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
-  test "should get index" do
-    get :index
-    assert_response :success
-  end
 
   test "should get show" do
     @mike = users(:mike)
@@ -25,8 +21,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should get create" do
     prev_user_count = User.count
-    post :create, user: { login: "MalachyConstant", password: "pass" }
-    assert assigns(:user).valid?
+    post :create, user: { name: "Mike", login: "MalachyConstant", password: "pass" }
     assert_equal "MalachyConstant", assigns(:user).login
     assert_equal prev_user_count + 1, User.count
   end
