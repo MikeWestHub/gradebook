@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+mike:
+  name: mike
+  login: westmd23
+  password_digest: MyString
+
+two:
+  name: jon
+  login: jj123
+  password_digest: MyString
