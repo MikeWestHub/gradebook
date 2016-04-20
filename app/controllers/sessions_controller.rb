@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
   def new
-    :session
   end
 
   def create
@@ -24,3 +23,4 @@ class SessionsController < ApplicationController
     params.require(:session).permit(:login, :password)
   end
 end
+ 

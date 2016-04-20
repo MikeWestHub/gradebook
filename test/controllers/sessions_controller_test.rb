@@ -8,10 +8,8 @@ class SessionsControllerTest < ActionController::TestCase
 
   test "should get create" do
     @user = users(:mike)
-    @session = session[:user_id]
-    @session = @user.id
-    get :create
-    assert_response :redirect
+    get :create, id: @user.id
+    assert_redirected_to user_path(id: @user.id)
   end
 
   test "should get destroy" do

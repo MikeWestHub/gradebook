@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
-  get 'teachers/new'
 
-  get 'teachers/show'
+  get 'grades/index'
 
-  get 'teachers/create'
+  get 'grades/new'
 
-  get 'teachers/destroy'
+  get 'grades/show'
+
+  get 'grades/edit'
+
+  get 'grades/create'
+
+  get 'grades/update'
+
+  get 'grades/destroy'
 
   get 'sessions/new'
 
@@ -13,6 +20,7 @@ Rails.application.routes.draw do
 
   get 'sessions/destroy'
 
+  resources :teachers
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
