@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'teachers/new'
+
+  get 'teachers/show'
+
+  get 'teachers/create'
+
+  get 'teachers/destroy'
+
   get 'sessions/new'
 
   post 'sessions/create'

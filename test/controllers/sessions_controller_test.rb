@@ -7,6 +7,9 @@ class SessionsControllerTest < ActionController::TestCase
   end
 
   test "should get create" do
+    @user = users(:mike)
+    @session = session[:user_id]
+    @session = @user.id
     get :create
     assert_response :redirect
   end
