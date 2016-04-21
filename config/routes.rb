@@ -1,24 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'grades/index'
-
-  get 'grades/new'
-
-  get 'grades/show'
-
-  get 'grades/edit'
-
-  get 'grades/create'
-
-  get 'grades/update'
-
-  get 'grades/destroy'
+  resources :grades
 
   get 'sessions/new'
 
   post 'sessions/create'
 
-  get 'sessions/destroy'
+  delete 'sessions/destroy'
 
   resources :teachers
   resources :users
