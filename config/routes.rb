@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+  get 'students/index'
+
+  get 'students/show'
+
+  get 'students/new'
+
+  get 'students/edit'
+
+  get 'students/create'
+
+  get 'students/update'
+
+  get 'students/delete'
+
   get 'sessions/new'
 
   post 'sessions/create'
