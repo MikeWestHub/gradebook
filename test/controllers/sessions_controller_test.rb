@@ -5,10 +5,10 @@ class SessionsControllerTest < ActionController::TestCase
     get :new
     assert_response :success
   end
-
+  
   test "should get create" do
     @user = users(:mike)
-    get :create, id: @user.id
+    get :create, session: { login: "westmd23", password: "pass" }
     assert_redirected_to user_path(id: @user.id)
   end
 

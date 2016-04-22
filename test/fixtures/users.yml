@@ -3,7 +3,7 @@
 mike:
   name: mike
   login: westmd23
-  password_digest: MyString
+  password_digest: $2a$10$MMBeHj7xCcieCH3vZbxUoOSN947JF3g7w7bBzeLHVp8qCft3Y1wlW
 
 two:
   name: jon
