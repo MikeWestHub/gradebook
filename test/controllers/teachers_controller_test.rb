@@ -18,7 +18,7 @@ class TeachersControllerTest < ActionController::TestCase
     end
     assert_response :success
   end
-  focus
+  
   test "should create user with teacher" do
     assert_difference "User.count", +1 do
       post :create, teacher: {
@@ -30,7 +30,7 @@ class TeachersControllerTest < ActionController::TestCase
           password_confirmation: "pass" }
         }
     end
-    assert_equal "Mike", assigns(:teacher).user.name 
+    assert_equal "Mike", assigns(:teacher).user.name
   end
 
   test "should get destroy" do

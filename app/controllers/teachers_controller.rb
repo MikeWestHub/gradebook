@@ -1,6 +1,7 @@
 class TeachersController < ApplicationController
   def new
     @teacher = Teacher.new
+    @teacher.build_user
   end
 
   def show
