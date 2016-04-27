@@ -1,11 +1,12 @@
 class TeachersController < ApplicationController
+  before_action :set_teacher, only: [:show, :destroy]
+
   def new
     @teacher = Teacher.new
     @teacher.build_user
   end
 
   def show
-    @teacher = Teacher.find(params[:id])
   end
 
   def create
@@ -13,7 +14,6 @@ class TeachersController < ApplicationController
   end
 
   def destroy
-    @teacher = Teacher.find(params[:id])
     @teacher.destroy
     redirect_to sessions_new_path
   end
@@ -22,5 +22,9 @@ class TeachersController < ApplicationController
 
   def teacher_params
     params.require(:teacher).permit(:user_id, user_attributes: [:name, :login, :password, :password_confirmation])
+  end
+
+  def set_teacher
+    @teacher = Teacher.find(params[:id])
   end
 end

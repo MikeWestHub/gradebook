@@ -1,9 +1,14 @@
 require 'test_helper'
 
 class GradesControllerTest < ActionController::TestCase
+  setup do
+    @grade = grades(:one)
+  end
+
   test "should get index" do
     get :index
     assert_response :success
+    assert_not_nil assigns(:grades)
   end
 
   test "should get new" do
@@ -11,29 +16,34 @@ class GradesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should get show" do
-    get :show
+  test "should create grade" do
+    assert_difference('Grade.count') do
+      post :create, grade: { assignment_name: @grade.assignment_name, grade: @grade.grade, student_id: @grade.student_id }
+    end
+
+    assert_redirected_to grade_path(assigns(:grade))
+  end
+
+  test "should show grade" do
+    get :show, id: @grade
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit
+    get :edit, id: @grade
     assert_response :success
   end
 
-  test "should get create" do
-    get :create
-    assert_response :success
+  test "should update grade" do
+    patch :update, id: @grade, grade: { assignment_name: @grade.assignment_name, grade: @grade.grade, student_id: @grade.student_id }
+    assert_redirected_to grade_path(assigns(:grade))
   end
 
-  test "should get update" do
-    get :update
-    assert_response :success
-  end
+  test "should destroy grade" do
+    assert_difference('Grade.count', -1) do
+      delete :destroy, id: @grade
+    end
 
-  test "should get destroy" do
-    get :destroy
-    assert_response :success
+    assert_redirected_to grades_path
   end
-
 end

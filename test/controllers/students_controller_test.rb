@@ -1,15 +1,14 @@
 require 'test_helper'
 
 class StudentsControllerTest < ActionController::TestCase
+  setup do
+    @student = students(:one)
+  end
+
   test "should get index" do
     get :index
     assert_response :success
-  end
-
-  test "should get show" do
-    @student = students(:one)
-    get :show, id: @student.id
-    assert_response :success
+    assert_not_nil assigns(:students)
   end
 
   test "should get new" do
@@ -17,42 +16,34 @@ class StudentsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  test "should create student" do
+    assert_difference('Student.count') do
+      post :create, student: { teacher_id: @student.teacher_id, user_id: @student.user_id }
+    end
+
+    assert_redirected_to student_path(assigns(:student))
+  end
+
+  test "should show student" do
+    get :show, id: @student
+    assert_response :success
+  end
+
   test "should get edit" do
-    @student = students(:one)
-    get :edit, id: @student.id
+    get :edit, id: @student
     assert_response :success
   end
 
-  test "should get create" do
-    assert_difference "Student.count", +1 do
-      post :create, teacher: {user_id: 1}
+  test "should update student" do
+    patch :update, id: @student, student: { teacher_id: @student.teacher_id, user_id: @student.user_id }
+    assert_redirected_to student_path(assigns(:student))
+  end
+
+  test "should destroy student" do
+    assert_difference('Student.count', -1) do
+      delete :destroy, id: @student
     end
-    assert_response :success
-  end
-  focus
-  test "should create user with student" do
-    assert_difference "Student.count", +1 do
-      post :create, student: {
-        user_id: 1,
-        teacher_id: 2,
-        user_attributes: {
-          name: "Mike",
-          login: "mwest23",
-          password: "pass",
-          password_confirmation: "pass" }
-        }
-    end
-    assert_equal "Mike", assigns(:student).user.name
-  end
 
-  test "should get update" do
-    get :update
-    assert_response :success
+    assert_redirected_to students_path
   end
-
-  test "should get delete" do
-    get :delete
-    assert_response :success
-  end
-
 end
